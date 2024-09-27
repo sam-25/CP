@@ -5,8 +5,8 @@
 #include <cstring> 
 using namespace std;
 typedef long long int ll;
-// #define YES cout<<"YES\n";
-// #define NO cout<<"NO\n";
+#define YES cout<<"YES\n";
+#define NO cout<<"NO\n";
 #define all(x) (x).begin(), (x).end()
 #define _prll(x) for(ll &i : (x)) cout << i << ' ';
 #define endl "\n"
@@ -19,19 +19,19 @@ typedef long long int ll;
 //#pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
 
 // --------------------ORDERED SET--------------------------------------------------------
-// #include <ext/pb_ds/assoc_container.hpp>
-// #include <ext/pb_ds/tree_policy.hpp>
-// using namespace __gnu_pbds;
-// #define ordered_set tree<int, null_type,less<int>, rb_tree_tag,tree_order_statistics_node_update>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+#define ordered_set tree<int, null_type,less<int>, rb_tree_tag,tree_order_statistics_node_update>
 // ------------------ORDERED MULTISET----------------------------------------
-// typedef tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics_node_update> indexed_set;
-//To erase x from ordered set a, use: a.erase(a.find_by_order(a.order_of_key(x)))
-//m.order_of_key(x) - to find number of elements smaller than x
-//*m.find_by_order(x)  -  to find element present at Xth index 
+typedef tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics_node_update> indexed_set;
+// To erase x from ordered set a, use: a.erase(a.find_by_order(a.order_of_key(x)))
+// m.order_of_key(x) - to find number of elements smaller than x
+// *m.find_by_order(x)  -  to find element present at Xth index 
 //---------------------------------------------------------------------------------------
 
-//__builtin_popcount(x), __builtin_popcountll(x)   -  number of ones in the binary representation of x
-//__builtin_clzll(x), __builtin_ctzll(x)  -   for counting the number of leading or trailing zeros in a positive number
+// __builtin_popcount(x), __builtin_popcountll(x)   -  number of ones in the binary representation of x
+// __builtin_clzll(x), __builtin_ctzll(x)  -   for counting the number of leading or trailing zeros in a positive number
 
 //-------------------CUSTOM HASH----------------------------------------------
 struct custom_hash {
@@ -39,56 +39,56 @@ struct custom_hash {
     size_t operator()(uint64_t x) const { static const uint64_t FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count(); return splitmix64(x + FIXED_RANDOM);    }
 };
 
-//unordered_map<long long, int, custom_hash> safe_map;
-//gp_hash_table<long long, int, custom_hash> safe_hash_table;
+unordered_map<long long, int, custom_hash> safe_map;
+gp_hash_table<long long, int, custom_hash> safe_hash_table;
 // DEBUGGER -----------------------------------------------------------------------------
-// void __print(int x) {cerr << x;}
-// void __print(long x) {cerr << x;}
-// void __print(long long x) {cerr << x;}
-// void __print(unsigned x) {cerr << x;}
-// void __print(unsigned long x) {cerr << x;}
-// void __print(unsigned long long x) {cerr << x;}
-// void __print(float x) {cerr << x;}
-// void __print(double x) {cerr << x;}
-// void __print(long double x) {cerr << x;}
-// void __print(char x) {cerr << '\'' << x << '\'';}
-// void __print(const char *x) {cerr << '\"' << x << '\"';}
-// void __print(const string &x) {cerr << '\"' << x << '\"';}
-// void __print(bool x) {cerr << (x ? "true" : "false");}
+void __print(int x) {cerr << x;}
+void __print(long x) {cerr << x;}
+void __print(long long x) {cerr << x;}
+void __print(unsigned x) {cerr << x;}
+void __print(unsigned long x) {cerr << x;}
+void __print(unsigned long long x) {cerr << x;}
+void __print(float x) {cerr << x;}
+void __print(double x) {cerr << x;}
+void __print(long double x) {cerr << x;}
+void __print(char x) {cerr << '\'' << x << '\'';}
+void __print(const char *x) {cerr << '\"' << x << '\"';}
+void __print(const string &x) {cerr << '\"' << x << '\"';}
+void __print(bool x) {cerr << (x ? "true" : "false");}
 
-// template<typename T, typename V>
-// void __print(const pair<T, V> &x) {cerr << '{'; __print(x.first); cerr << ','; __print(x.second); cerr << '}';}
-// template<typename T>
-// void __print(const T &x) {int f = 0; cerr << '{'; for (auto &i : x) cerr << (f++ ? "," : ""), __print(i); cerr << "}";}
-// void _print() {cerr << "]\n";}
-// template <typename T, typename... V>
-// void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v...);}
-// #ifndef ONLINE_JUDGE
-// #define debug(x...) cerr << "[" << #x << "] = ["; _print(x)
-// #else
-// #define debug(x...)
-// #endif
+template<typename T, typename V>
+void __print(const pair<T, V> &x) {cerr << '{'; __print(x.first); cerr << ','; __print(x.second); cerr << '}';}
+template<typename T>
+void __print(const T &x) {int f = 0; cerr << '{'; for (auto &i : x) cerr << (f++ ? "," : ""), __print(i); cerr << "}";}
+void _print() {cerr << "]\n";}
+template <typename T, typename... V>
+void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v...);}
+#ifndef ONLINE_JUDGE
+#define debug(x...) cerr << "[" << #x << "] = ["; _print(x)
+#else
+#define debug(x...)
+#endif
 
-// //COMPARATORS----------------------------------------------------------------------------
-// bool compare(pair<int, int> i, pair<int, int> j) {
-//     if (i.first > j.first) return true;
-//     else if (i.first == j.first) return i.second < j.second;
-//     return false;
-// }
-// class cmp {
-// public:
-//     bool operator()(pair<ll , ll> a, pair<ll, ll > b) {
-//         return (a.second < b.second);
-//     }
-// };
-//---------------------------------------------------------------------------------------
+//COMPARATORS----------------------------------------------------------------------------
+bool compare(pair<int, int> i, pair<int, int> j) {
+    if (i.first > j.first) return true;
+    else if (i.first == j.first) return i.second < j.second;
+    return false;
+}
+class cmp {
+public:
+    bool operator()(pair<ll , ll> a, pair<ll, ll > b) {
+        return (a.second < b.second);
+    }
+};
+// ---------------------------------------------------------------------------------------
 
 // Modulo inverse for non-prime numbers modInverse(a,b) = a^(-1)(modb)
-// tuple<long long, long long, long long> extendedGCD(long long a, long long b) { if (b == 0) return {a, 1, 0}; auto [gcd, x1, y1] = extendedGCD(b, a % b); long long x = y1, y = x1 - (a / b) * y1; return {gcd, x, y}; }
+tuple<long long, long long, long long> extendedGCD(long long a, long long b) { if (b == 0) return {a, 1, 0}; auto [gcd, x1, y1] = extendedGCD(b, a % b); long long x = y1, y = x1 - (a / b) * y1; return {gcd, x, y}; }
 // Function to find the Modulo Inverse of 'a' modulo 'm' (non prime)
-// long long modInverse(long long k, long long H) { auto [gcd, x, y] = extendedGCD(k, H);
-//         if (gcd != 1) { return -1; }// Inverse doesn't exist (k and H are not coprime).
-//         else { return (x % H + H) % H; } } // m is added to handle negative x
+long long modInverse(long long k, long long H) { auto [gcd, x, y] = extendedGCD(k, H);
+        if (gcd != 1) { return -1; }// Inverse doesn't exist (k and H are not coprime).
+        else { return (x % H + H) % H; } } // m is added to handle negative x
 //---------------------------------------------------------------------------------------
 
 long double lmax;
@@ -146,10 +146,11 @@ void main_(){
         cout<<"Case #"<<tt++<<": ";
         
     }
+    return;
 }
 
 int main() {
-    run_with_stack_size(main_, 1024  * 1024*1024);
+    
     ios_base::sync_with_stdio(false);   cin.tie(NULL); cout.tie(NULL);
     if (freopen("/Users/samarthgattu/Desktop/CP/code/input.txt", "r", stdin) == NULL) {
         cerr << "Error opening INPUT file!!" << endl;
@@ -157,6 +158,6 @@ int main() {
     if (freopen("/Users/samarthgattu/Desktop/CP/code/output.txt", "w", stdout) == NULL) {
         cerr << "Error opening OUTPUT file!!" << endl;
     }
-    main_();
+    run_with_stack_size(main_, 1024  * 1024*1024);
     return 0;
 }
