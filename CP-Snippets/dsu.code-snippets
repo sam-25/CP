@@ -1,0 +1,32 @@
+{
+  "": {
+	"prefix": "dsu",
+	"body": [
+		"//---DSU----",
+		"vector<ll> par(200005);",
+		"vector<ll> cnt(200005);",
+		"",
+		"ll find(ll i){",
+		"    if(par[i]==i) return i;",
+		"    return par[i]=find(par[i]);",
+		"}",
+		"",
+		"void merge(ll i,ll j){",
+		"    ll pari=find(i);",
+		"    ll parj=find(j);",
+		"    if(pari!=parj){",
+		"        if(cnt[pari]<cnt[parj]){",
+		"            par[pari]=parj;",
+		"            cnt[pari]+=cnt[parj];",
+		"        }else{",
+		"            par[parj]=pari;",
+		"            cnt[pari]+=cnt[parj];",
+		"        }",
+		"    }",
+		"    return;",
+		"}",
+		"//-----------"
+	],
+	"description": ""
+	}
+}
